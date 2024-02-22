@@ -909,7 +909,7 @@ class HotelRetrieveService {
     searchHotels(hotelQuery) {
         const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]().set('access-control-allow-origin', '*')
             .set('api_key', 'c8b129c2e8c53de7adc8e2d1ede8d5d3');
-        return this.httpClient.get('https://hotel-api-2445583353637.production.gw.apicast.io:443/api/v2/hotel?city=' + hotelQuery.city + '&state=FL&country=US&distance=5&distanceunit=M', { headers }).pipe(
+        return this.httpClient.get('https://hotel-api-2445583353637.production.gw.apicast.io:443/api/v2/hotel?city=' + hotelQuery.city + '&state=FL&country=US&distance=35&distanceunit=M', { headers }).pipe(
         // catchError(this.handleError)
         );
     }

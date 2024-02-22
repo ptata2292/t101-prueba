@@ -4718,12 +4718,12 @@ const routes = [
             // { path: '', redirectTo: config.objectRouting.Flights.URLLink, pathMatch: 'full'},
             {
                 path: '',
-                loadChildren: () => Promise.all(/*! import() | views-pages-airline-airline-module */[__webpack_require__.e("common"), __webpack_require__.e("views-pages-airline-airline-module")]).then(__webpack_require__.bind(null, /*! ./views/pages/airline/airline.module */ "vv7W")).then(m => m.AirlineModule),
+                loadChildren: () => Promise.all(/*! import() | views-pages-hotel-hotel-module */[__webpack_require__.e("default~views-pages-auth-auth-module~views-pages-hotel-hotel-module"), __webpack_require__.e("common"), __webpack_require__.e("views-pages-hotel-hotel-module")]).then(__webpack_require__.bind(null, /*! ./views/pages/hotel/hotel.module */ "hObm")).then(m => m.HotelModule),
                 canActivate: [_guard_authorization_guard__WEBPACK_IMPORTED_MODULE_7__["AuthorizationGuard"]]
             },
             {
                 path: _shared_config__WEBPACK_IMPORTED_MODULE_8__["config"].objectRouting.Flights.URLLink,
-                loadChildren: () => Promise.all(/*! import() | views-pages-airline-airline-module */[__webpack_require__.e("common"), __webpack_require__.e("views-pages-airline-airline-module")]).then(__webpack_require__.bind(null, /*! ./views/pages/airline/airline.module */ "vv7W")).then(m => m.AirlineModule),
+                loadChildren: () => Promise.all(/*! import() | views-pages-hotel-hotel-module */[__webpack_require__.e("default~views-pages-auth-auth-module~views-pages-hotel-hotel-module"), __webpack_require__.e("common"), __webpack_require__.e("views-pages-hotel-hotel-module")]).then(__webpack_require__.bind(null, /*! ./views/pages/hotel/hotel.module */ "hObm")).then(m => m.HotelModule),
                 canActivate: [_guard_authorization_guard__WEBPACK_IMPORTED_MODULE_7__["AuthorizationGuard"]]
             },
             {
