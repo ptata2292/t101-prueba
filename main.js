@@ -157,7 +157,7 @@ TransportationStateModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorat
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\pedro\OneDrive\Escritorio\trabajo-striano\air-poc-ui-develop\src\main.ts */"zUnb");
+module.exports = __webpack_require__(/*! C:\Users\pedro\OneDrive\Escritorio\react\hotel\LR%20GUI\src\main.ts */"zUnb");
 
 
 /***/ }),
@@ -592,9 +592,9 @@ const environment = {
         prd: 'https://air-api.dev.linksrez.com/api/'
     },
     hotelsApiEndpoint: {
-        dev: 'https://api.dev.linksrez.com/',
-        stg: 'https://api.stg.linksrez.com/',
-        prd: 'https://api.linksrez.com/'
+        dev: 'https://hotel-api-2445583353637.production.gw.apicast.io:443/api/v2/',
+        stg: 'https://hotel-api-2445583353637.production.gw.apicast.io:443/api/v2/',
+        prd: 'https://hotel-api-2445583353637.production.gw.apicast.io:443/api/v2/'
     },
     hotelsImgEndpoint: 'https://test-hotelapi2staging.linksrez.com/api/values',
     carRentalApiEndpoint: {
@@ -881,7 +881,7 @@ const linkrez = {
     "logo": "linkrez.svg",
     "whiteLogo": "linkrezWhite.svg",
     "favIcon": "linkrezFavIcon.ico",
-    "title": "Linkrez",
+    "title": "T101",
     "theme": "linkrez",
     "loginLogos": [],
     "authorizedModules": ["Airlines", "Hotels", "CarRental", "Golf", "Spa", "Rail", "Cruise", "Transportation"],
@@ -1281,7 +1281,7 @@ class BaseComponent {
     }
 }
 BaseComponent.ɵfac = function BaseComponent_Factory(t) { return new (t || BaseComponent)(); };
-BaseComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: BaseComponent, selectors: [["app-base"]], decls: 33, vars: 0, consts: [["id", "lr_header_mobile", 1, "header-mobile"], ["href", "index.html"], ["alt", "Logo", "src", "assets/media/logos/logo-letter-1.png", 1, "logo-default", "max-h-30px"], [1, "d-flex", "align-items-center"], ["id", "lr_header_mobile_toggle", 1, "btn", "p-0", "burger-icon", "burger-icon-left", "ml-4"], ["id", "lr_header_mobile_topbar_toggle", 1, "btn", "btn-icon", "btn-hover-transparent-white", "p-0", "ml-3"], [1, "svg-icon", "svg-icon-xl"], ["xmlns", "http://www.w3.org/2000/svg", 0, "xmlns", "xlink", "http://www.w3.org/1999/xlink", "width", "24px", "height", "24px", "viewBox", "0 0 24 24", "version", "1.1"], ["stroke", "none", "stroke-width", "1", "fill", "none", "fill-rule", "evenodd"], ["points", "0 0 24 0 24 24 0 24"], ["d", "M12,11 C9.790861,11 8,9.209139 8,7 C8,4.790861 9.790861,3 12,3 C14.209139,3 16,4.790861 16,7 C16,9.209139 14.209139,11 12,11 Z", "fill", "#000000", "fill-rule", "nonzero", "opacity", "0.3"], ["d", "M3.00065168,20.1992055 C3.38825852,15.4265159 7.26191235,13 11.9833413,13 C16.7712164,13 20.7048837,15.2931929 20.9979143,20.2 C21.0095879,20.3954741 20.9979143,21 20.2466999,21 C16.541124,21 11.0347247,21 3.72750223,21 C3.47671215,21 2.97953825,20.45918 3.00065168,20.1992055 Z", "fill", "#000000", "fill-rule", "nonzero"], [1, "d-flex", "flex-column", "flex-root"], [1, "d-flex", "flex-row", "flex-column-fluid", "page"], ["id", "lr_wrapper", 1, "d-flex", "flex-column", "flex-row-fluid", "wrapper"], ["id", "lr_content", 1, "content", "d-flex", "flex-column", "flex-column-fluid", "pt-0"], ["id", "lr_footer", 1, "footer", "bg-dark", "py-4", "d-none", "flex-lg-column"], [1, "container", "d-flex", "flex-column", "flex-md-row", "align-items-center", "justify-content-between"], [1, "text-white", "font-weight-bold", "order-2", "order-md-1"], [1, "mr-2"], ["href", "#", "target", "_blank", 1, "text-hover-primary"], [1, "nav", "nav-dark", "order-1", "order-md-2"], ["href", "#", "target", "_blank", 1, "nav-link", "text-white-50", "pr-3", "pl-0"], ["href", "#", "target", "_blank", 1, "nav-link", "text-white-50", "px-3"], ["href", "#", "target", "_blank", 1, "nav-link", "text-white-50", "pl-3", "pr-0"]], template: function BaseComponent_Template(rf, ctx) { if (rf & 1) {
+BaseComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: BaseComponent, selectors: [["app-base"]], decls: 33, vars: 0, consts: [["id", "lr_header_mobile", 1, "header-mobile"], ["href", "index.html"], ["alt", "Logo", "src", "assets/media/logoNew/logo.png", 1, "logo-default", "max-h-30px"], [1, "d-flex", "align-items-center"], ["id", "lr_header_mobile_toggle", 1, "btn", "p-0", "burger-icon", "burger-icon-left", "ml-4"], ["id", "lr_header_mobile_topbar_toggle", 1, "btn", "btn-icon", "btn-hover-transparent-white", "p-0", "ml-3"], [1, "svg-icon", "svg-icon-xl"], ["xmlns", "http://www.w3.org/2000/svg", 0, "xmlns", "xlink", "http://www.w3.org/1999/xlink", "width", "24px", "height", "24px", "viewBox", "0 0 24 24", "version", "1.1"], ["stroke", "none", "stroke-width", "1", "fill", "none", "fill-rule", "evenodd"], ["points", "0 0 24 0 24 24 0 24"], ["d", "M12,11 C9.790861,11 8,9.209139 8,7 C8,4.790861 9.790861,3 12,3 C14.209139,3 16,4.790861 16,7 C16,9.209139 14.209139,11 12,11 Z", "fill", "#000000", "fill-rule", "nonzero", "opacity", "0.3"], ["d", "M3.00065168,20.1992055 C3.38825852,15.4265159 7.26191235,13 11.9833413,13 C16.7712164,13 20.7048837,15.2931929 20.9979143,20.2 C21.0095879,20.3954741 20.9979143,21 20.2466999,21 C16.541124,21 11.0347247,21 3.72750223,21 C3.47671215,21 2.97953825,20.45918 3.00065168,20.1992055 Z", "fill", "#000000", "fill-rule", "nonzero"], [1, "d-flex", "flex-column", "flex-root"], [1, "d-flex", "flex-row", "flex-column-fluid", "page"], ["id", "lr_wrapper", 1, "d-flex", "flex-column", "flex-row-fluid", "wrapper"], ["id", "lr_content", 1, "content", "d-flex", "flex-column", "flex-column-fluid", "pt-0"], ["id", "lr_footer", 1, "footer", "bg-dark", "py-4", "d-none", "flex-lg-column"], [1, "container", "d-flex", "flex-column", "flex-md-row", "align-items-center", "justify-content-between"], [1, "text-white", "font-weight-bold", "order-2", "order-md-1"], [1, "mr-2"], ["href", "#", "target", "_blank", 1, "text-hover-primary"], [1, "nav", "nav-dark", "order-1", "order-md-2"], ["href", "#", "target", "_blank", 1, "nav-link", "text-white-50", "pr-3", "pl-0"], ["href", "#", "target", "_blank", 1, "nav-link", "text-white-50", "px-3"], ["href", "#", "target", "_blank", 1, "nav-link", "text-white-50", "pl-3", "pr-0"]], template: function BaseComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "a", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "img", 2);

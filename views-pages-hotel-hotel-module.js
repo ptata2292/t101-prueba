@@ -887,6 +887,8 @@ class HotelRetrieveService {
     }
     getHotelDescription(hotelQuery) {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]().set('access-control-allow-origin', '*')
+                .set('api_key', 'c8b129c2e8c53de7adc8e2d1ede8d5d3');
             try {
                 let params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpParams"]();
                 params = params.append('chainCode', hotelQuery.chainCode);
@@ -896,7 +898,7 @@ class HotelRetrieveService {
                 }
                 // const headers = new HttpHeaders().set('access-control-allow-origin', '*')
                 // .set('api_key', 'c8b129c2e8c53de7adc8e2d1ede8d5d3');
-                const res = yield this.httpClient.get(Object(_shared_tenant_tenant__WEBPACK_IMPORTED_MODULE_5__["getHotelsAPI"])() + 'api/v2/hotel/description', { params }).pipe(
+                const res = yield this.httpClient.get(Object(_shared_tenant_tenant__WEBPACK_IMPORTED_MODULE_5__["getHotelsAPI"])() + 'hotel/description', { params, headers }).pipe(
                 // catchError(this.handleError)
                 ).toPromise();
                 return JSON.parse(JSON.stringify(res));
@@ -2568,31 +2570,40 @@ class HotelOrderService {
         this.loginService = loginService;
     }
     getOrderById(orderQuery) {
+        console.log(orderQuery);
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]().set('access-control-allow-origin', '*')
+            .set('api_key', 'c8b129c2e8c53de7adc8e2d1ede8d5d3');
         let params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]();
-        params = params.append('confirmationId', orderQuery.confirmationId);
-        params = params.append('surname', orderQuery.surname);
-        params = params.append('chainCode', orderQuery.chainCode);
-        return this.httpClient.get(Object(_shared_tenant_tenant__WEBPACK_IMPORTED_MODULE_3__["getHotelsAPI"])() + 'api/v2/hotel/order', { params: params }).pipe(
+        params = params.append('confirmationId', orderQuery);
+        params = params.append('surname', orderQuery);
+        params = params.append('chainCode', orderQuery);
+        return this.httpClient.get(Object(_shared_tenant_tenant__WEBPACK_IMPORTED_MODULE_3__["getHotelsAPI"])() + 'hotel/order', { params: params, headers }).pipe(
         // catchError(this.handleError)
         );
     }
     cancelOrderById(orderId) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]().set('access-control-allow-origin', '*')
+            .set('api_key', 'c8b129c2e8c53de7adc8e2d1ede8d5d3');
         let params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]();
         // params = params.append('query', airportCode);
-        return this.httpClient.delete(Object(_shared_tenant_tenant__WEBPACK_IMPORTED_MODULE_3__["getHotelsAPI"])() + 'api/v2/hotel/order' + orderId, { params: params }).pipe(
+        return this.httpClient.delete(Object(_shared_tenant_tenant__WEBPACK_IMPORTED_MODULE_3__["getHotelsAPI"])() + 'hotel/order' + orderId, { params: params, headers }).pipe(
         // catchError(this.handleError)
         );
     }
     getOrderByName(firstName, lastName) {
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]().set('access-control-allow-origin', '*')
+            .set('api_key', 'c8b129c2e8c53de7adc8e2d1ede8d5d3');
         let params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]();
         params = params.append('firstName', firstName);
         params = params.append('lastName', lastName);
-        return this.httpClient.get(Object(_shared_tenant_tenant__WEBPACK_IMPORTED_MODULE_3__["getHotelsAPI"])() + 'orders/name', { params: params }).pipe(
+        return this.httpClient.get(Object(_shared_tenant_tenant__WEBPACK_IMPORTED_MODULE_3__["getHotelsAPI"])() + 'orders/name', { params: params, headers }).pipe(
         // catchError(this.handleError)
         );
     }
     createOrder(hotelOrderQuery) {
-        return this.httpClient.post(Object(_shared_tenant_tenant__WEBPACK_IMPORTED_MODULE_3__["getHotelsAPI"])() + 'api/v2/hotel/order', hotelOrderQuery).pipe(
+        const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]().set('access-control-allow-origin', '*')
+            .set('api_key', 'c8b129c2e8c53de7adc8e2d1ede8d5d3');
+        return this.httpClient.post(Object(_shared_tenant_tenant__WEBPACK_IMPORTED_MODULE_3__["getHotelsAPI"])() + 'hotel/order', hotelOrderQuery, { headers }).pipe(
         // catchError(this.handleError)
         );
     }
@@ -5860,11 +5871,12 @@ __webpack_require__.r(__webpack_exports__);
 const _c0 = ["picker1"];
 const _c1 = ["picker2"];
 const _c2 = ["travellersSelect"];
-const _c3 = ["hotelPlaceDiv"];
-const _c4 = ["countPopupDiv"];
-const _c5 = ["travellersDiv"];
-const _c6 = ["hotelListComponent"];
-const _c7 = ["placeInput"];
+const _c3 = ["travellersSelectRooms"];
+const _c4 = ["hotelPlaceDiv"];
+const _c5 = ["countPopupDiv"];
+const _c6 = ["travellersDiv"];
+const _c7 = ["hotelListComponent"];
+const _c8 = ["placeInput"];
 function HotelSearchComponent_div_0_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 2);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](1, "mat-spinner", 3);
@@ -5874,9 +5886,9 @@ function HotelSearchComponent_div_0_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("diameter", 30);
 } }
 function HotelSearchComponent_div_1_input_11_Template(rf, ctx) { if (rf & 1) {
-    const _r17 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    const _r21 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "input", 32);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function HotelSearchComponent_div_1_input_11_Template_input_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r17); const ctx_r16 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); return ctx_r16.clickChange("place"); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function HotelSearchComponent_div_1_input_11_Template_input_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r21); const ctx_r20 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); return ctx_r20.clickChange("place"); });
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
@@ -5884,11 +5896,11 @@ function HotelSearchComponent_div_1_input_11_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpropertyInterpolate"]("value", ctx_r3.hotelSearchFormGroup.value.place);
 } }
 function HotelSearchComponent_div_1_div_12_Template(rf, ctx) { if (rf & 1) {
-    const _r19 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    const _r23 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 33);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "mat-form-field", 34);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "input", 35);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("onSelect", function HotelSearchComponent_div_1_div_12_Template_input_onSelect_2_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r19); const ctx_r18 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); return ctx_r18.setAddress($event); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("onSelect", function HotelSearchComponent_div_1_div_12_Template_input_onSelect_2_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r23); const ctx_r22 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); return ctx_r22.setAddress($event); });
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
@@ -5917,34 +5929,28 @@ function HotelSearchComponent_div_1_div_23_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "span", 37);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "Room");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](5, "span", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](6, "Guests");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const ctx_r9 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", ctx_r9.hotelSearchFormGroup.value.rooms, "");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", ctx_r9.hotelSearchFormGroup.value.count, "");
 } }
 function HotelSearchComponent_div_1_div_24_mat_option_4_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "mat-option", 41);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const number_r22 = ctx.$implicit;
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("value", number_r22);
+    const number_r26 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("value", number_r26);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", number_r22, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", number_r26, " ");
 } }
 function HotelSearchComponent_div_1_div_24_Template(rf, ctx) { if (rf & 1) {
-    const _r24 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    const _r28 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 33);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "mat-form-field", 34);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "mat-select", 38, 39);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("selectionChange", function HotelSearchComponent_div_1_div_24_Template_mat_select_selectionChange_2_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r24); const ctx_r23 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); return ctx_r23.countChange($event.value); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("selectionChange", function HotelSearchComponent_div_1_div_24_Template_mat_select_selectionChange_2_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r28); const ctx_r27 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); return ctx_r27.roomsChange($event.value); });
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](4, HotelSearchComponent_div_1_div_24_mat_option_4_Template, 2, 2, "mat-option", 40);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
@@ -5952,7 +5958,7 @@ function HotelSearchComponent_div_1_div_24_Template(rf, ctx) { if (rf & 1) {
 } if (rf & 2) {
     const ctx_r10 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("formControl", ctx_r10.hotelSearchFormGroup.get("count"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("formControl", ctx_r10.hotelSearchFormGroup.get("rooms"));
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngForOf", ctx_r10.numbers);
 } }
@@ -5961,7 +5967,51 @@ function HotelSearchComponent_div_1_mat_error_25_Template(rf, ctx) { if (rf & 1)
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "Please choose a number");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } }
-function HotelSearchComponent_div_1_div_30_Template(rf, ctx) { if (rf & 1) {
+function HotelSearchComponent_div_1_div_32_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 36);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "span", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "Guests");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r13 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", ctx_r13.hotelSearchFormGroup.value.count, "");
+} }
+function HotelSearchComponent_div_1_div_33_mat_option_4_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "mat-option", 41);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const number_r31 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("value", number_r31);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", number_r31, " ");
+} }
+function HotelSearchComponent_div_1_div_33_Template(rf, ctx) { if (rf & 1) {
+    const _r33 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 33);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "mat-form-field", 34);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "mat-select", 38, 42);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("selectionChange", function HotelSearchComponent_div_1_div_33_Template_mat_select_selectionChange_2_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r33); const ctx_r32 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); return ctx_r32.countChange($event.value); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](4, HotelSearchComponent_div_1_div_33_mat_option_4_Template, 2, 2, "mat-option", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r14 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("formControl", ctx_r14.hotelSearchFormGroup.get("count"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngForOf", ctx_r14.numbers);
+} }
+function HotelSearchComponent_div_1_mat_error_34_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "mat-error");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "Please choose a number");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} }
+function HotelSearchComponent_div_1_div_39_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 2);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](1, "mat-spinner", 3);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
@@ -5969,13 +6019,13 @@ function HotelSearchComponent_div_1_div_30_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("diameter", 30);
 } }
-function HotelSearchComponent_div_1_div_31_tr_22_Template(rf, ctx) { if (rf & 1) {
-    const _r28 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+function HotelSearchComponent_div_1_div_40_tr_22_Template(rf, ctx) { if (rf & 1) {
+    const _r37 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "tr");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "td", 53);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "label", 50);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](3, "input", 54);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngModelChange", function HotelSearchComponent_div_1_div_31_tr_22_Template_input_ngModelChange_3_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r28); const hotel_r26 = ctx.$implicit; return hotel_r26.selected = $event; })("change", function HotelSearchComponent_div_1_div_31_tr_22_Template_input_change_3_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r28); const ctx_r29 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](3); return ctx_r29.checkIfAllSelected(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "td", 54);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "label", 51);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](3, "input", 55);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngModelChange", function HotelSearchComponent_div_1_div_40_tr_22_Template_input_ngModelChange_3_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r37); const hotel_r35 = ctx.$implicit; return hotel_r35.selected = $event; })("change", function HotelSearchComponent_div_1_div_40_tr_22_Template_input_change_3_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r37); const ctx_r38 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](3); return ctx_r38.checkIfAllSelected(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](4, "span");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
@@ -5991,37 +6041,37 @@ function HotelSearchComponent_div_1_div_31_tr_22_Template(rf, ctx) { if (rf & 1)
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const hotel_r26 = ctx.$implicit;
+    const hotel_r35 = ctx.$implicit;
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", hotel_r26.selected);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", hotel_r35.selected);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](hotel_r26.basicPropertyInfo.name);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](hotel_r35.basicPropertyInfo.name);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate4"]("", hotel_r26.location.address.street, ", ", hotel_r26.location.address.city, ", ", hotel_r26.location.address.stateProv.value, ", ", hotel_r26.location.address.country.value, "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate4"]("", hotel_r35.location.address.street, ", ", hotel_r35.location.address.city, ", ", hotel_r35.location.address.stateProv.value, ", ", hotel_r35.location.address.country.value, "");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("", hotel_r26.relativePosition.distance, " Miles From City Center");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("", hotel_r35.relativePosition.distance, " Miles From City Center");
 } }
-function HotelSearchComponent_div_1_div_31_Template(rf, ctx) { if (rf & 1) {
-    const _r31 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+function HotelSearchComponent_div_1_div_40_Template(rf, ctx) { if (rf & 1) {
+    const _r40 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 6);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "div", 7);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 42);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](3, "div", 43);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "div", 44);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](5, "input", 45);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("input", function HotelSearchComponent_div_1_div_31_Template_input_input_5_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r31); const ctx_r30 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); return ctx_r30.searchHotelName($event.target.value); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 43);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](3, "div", 44);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "div", 45);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](5, "input", 46);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("input", function HotelSearchComponent_div_1_div_40_Template_input_input_5_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r40); const ctx_r39 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); return ctx_r39.searchHotelName($event.target.value); });
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](6, "div", 46);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](6, "div", 47);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](7, "div", 47);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](8, "table", 48);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](7, "div", 48);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](8, "table", 49);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](9, "thead");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](10, "tr");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](11, "th", 49);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](12, "label", 50);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](13, "input", 51);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngModelChange", function HotelSearchComponent_div_1_div_31_Template_input_ngModelChange_13_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r31); const ctx_r32 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); return ctx_r32.selectedAll = $event; })("change", function HotelSearchComponent_div_1_div_31_Template_input_change_13_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r31); const ctx_r33 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); return ctx_r33.selectAll(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](11, "th", 50);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](12, "label", 51);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](13, "input", 52);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngModelChange", function HotelSearchComponent_div_1_div_40_Template_input_ngModelChange_13_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r40); const ctx_r41 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); return ctx_r41.selectedAll = $event; })("change", function HotelSearchComponent_div_1_div_40_Template_input_change_13_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r40); const ctx_r42 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); return ctx_r42.selectAll(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](14, "span");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
@@ -6038,7 +6088,7 @@ function HotelSearchComponent_div_1_div_31_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](21, "tbody");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](22, HotelSearchComponent_div_1_div_31_tr_22_Template, 11, 7, "tr", 52);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](22, HotelSearchComponent_div_1_div_40_tr_22_Template, 11, 7, "tr", 53);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
@@ -6046,35 +6096,35 @@ function HotelSearchComponent_div_1_div_31_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const ctx_r13 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
+    const ctx_r17 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](13);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", ctx_r13.selectedAll);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", ctx_r17.selectedAll);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](9);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngForOf", ctx_r13.searchList);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngForOf", ctx_r17.searchList);
 } }
-function HotelSearchComponent_div_1_div_32_Template(rf, ctx) { if (rf & 1) {
-    const _r35 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 55);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "a", 56);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function HotelSearchComponent_div_1_div_32_Template_a_click_1_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r35); const ctx_r34 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); return ctx_r34.toggleShowFare(); });
+function HotelSearchComponent_div_1_div_41_Template(rf, ctx) { if (rf & 1) {
+    const _r44 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 56);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "a", 57);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function HotelSearchComponent_div_1_div_41_Template_a_click_1_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r44); const ctx_r43 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2); return ctx_r43.toggleShowFare(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](2, "Check Pricing");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } }
-function HotelSearchComponent_div_1_div_33_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 57);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "div", 58);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](2, "i", 59);
+function HotelSearchComponent_div_1_div_42_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 58);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "div", 59);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](2, "i", 60);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const ctx_r15 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
+    const ctx_r19 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", ctx_r15.errorMessage, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", ctx_r19.errorMessage, " ");
 } }
 function HotelSearchComponent_div_1_Template(rf, ctx) { if (rf & 1) {
-    const _r37 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    const _r46 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 4);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "div", 5);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 6);
@@ -6082,7 +6132,7 @@ function HotelSearchComponent_div_1_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "div", 8);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](5, "div", 9);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](6, "div", 10, 11);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function HotelSearchComponent_div_1_Template_div_click_6_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r37); const ctx_r36 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r36.clickChange("place"); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function HotelSearchComponent_div_1_Template_div_click_6_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r46); const ctx_r45 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r45.clickChange("place"); });
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](8, "div", 12);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](9, "span", 13);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](10, "Destination/Airport/Landmark/Hotel");
@@ -6094,38 +6144,50 @@ function HotelSearchComponent_div_1_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](15, "datepicker-range", 17, 18);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("searchFormGroupChange", function HotelSearchComponent_div_1_Template_datepicker_range_searchFormGroupChange_15_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r37); const ctx_r38 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r38.hotelSearchFormGroup = $event; })("clickChange", function HotelSearchComponent_div_1_Template_datepicker_range_clickChange_15_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r37); const ctx_r39 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r39.click = $event; })("isSubmittedChange", function HotelSearchComponent_div_1_Template_datepicker_range_isSubmittedChange_15_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r37); const ctx_r40 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r40.isSubmitted = $event; })("isSearchPageChange", function HotelSearchComponent_div_1_Template_datepicker_range_isSearchPageChange_15_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r37); const ctx_r41 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r41.isSearchPage = $event; })("nameChange", function HotelSearchComponent_div_1_Template_datepicker_range_nameChange_15_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r37); const ctx_r42 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r42.rangeNames = $event; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("searchFormGroupChange", function HotelSearchComponent_div_1_Template_datepicker_range_searchFormGroupChange_15_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r46); const ctx_r47 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r47.hotelSearchFormGroup = $event; })("clickChange", function HotelSearchComponent_div_1_Template_datepicker_range_clickChange_15_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r46); const ctx_r48 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r48.click = $event; })("isSubmittedChange", function HotelSearchComponent_div_1_Template_datepicker_range_isSubmittedChange_15_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r46); const ctx_r49 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r49.isSubmitted = $event; })("isSearchPageChange", function HotelSearchComponent_div_1_Template_datepicker_range_isSearchPageChange_15_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r46); const ctx_r50 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r50.isSearchPage = $event; })("nameChange", function HotelSearchComponent_div_1_Template_datepicker_range_nameChange_15_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r46); const ctx_r51 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r51.rangeNames = $event; });
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](17, "div", 19);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](18, "div", 20, 21);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function HotelSearchComponent_div_1_Template_div_click_18_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r37); const ctx_r43 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r43.clickChange("count"); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function HotelSearchComponent_div_1_Template_div_click_18_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r46); const ctx_r52 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r52.clickChange("rooms"); });
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](20, "span", 13);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](21, "Rooms & Guests ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](21, "Rooms");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](22, "i", 22);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](23, HotelSearchComponent_div_1_div_23_Template, 7, 2, "div", 23);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](23, HotelSearchComponent_div_1_div_23_Template, 4, 1, "div", 23);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](24, HotelSearchComponent_div_1_div_24_Template, 5, 2, "div", 15);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](25, HotelSearchComponent_div_1_mat_error_25_Template, 2, 0, "mat-error", 16);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](26, "div", 24);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](27, "button", 25);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function HotelSearchComponent_div_1_Template_button_click_27_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r37); const ctx_r44 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r44.search(); });
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](28, " Search ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](29, "i", 26);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](26, "div", 19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](27, "div", 20, 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function HotelSearchComponent_div_1_Template_div_click_27_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r46); const ctx_r53 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r53.clickChange("count"); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](29, "span", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](30, "Guests ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](31, "i", 22);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](32, HotelSearchComponent_div_1_div_32_Template, 4, 1, "div", 23);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](33, HotelSearchComponent_div_1_div_33_Template, 5, 2, "div", 15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](34, HotelSearchComponent_div_1_mat_error_34_Template, 2, 0, "mat-error", 16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](35, "div", 24);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](36, "button", 25);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function HotelSearchComponent_div_1_Template_button_click_36_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r46); const ctx_r54 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r54.search(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](37, " Search ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](38, "i", 26);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](30, HotelSearchComponent_div_1_div_30_Template, 2, 1, "div", 0);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](31, HotelSearchComponent_div_1_div_31_Template, 23, 2, "div", 27);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](32, HotelSearchComponent_div_1_div_32_Template, 3, 0, "div", 28);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](33, HotelSearchComponent_div_1_div_33_Template, 4, 1, "div", 29);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](34, "div", 30);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](35, "app-hotel-list", 31);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("isLoadingChange", function HotelSearchComponent_div_1_Template_app_hotel_list_isLoadingChange_35_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r37); const ctx_r45 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r45.isLoadingChange($event); })("isHotelListFetchingChange", function HotelSearchComponent_div_1_Template_app_hotel_list_isHotelListFetchingChange_35_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r37); const ctx_r46 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r46.isHotelListFetchingChange($event); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](39, HotelSearchComponent_div_1_div_39_Template, 2, 1, "div", 0);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](40, HotelSearchComponent_div_1_div_40_Template, 23, 2, "div", 27);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](41, HotelSearchComponent_div_1_div_41_Template, 3, 0, "div", 28);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](42, HotelSearchComponent_div_1_div_42_Template, 4, 1, "div", 29);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](43, "div", 30);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](44, "app-hotel-list", 31);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("isLoadingChange", function HotelSearchComponent_div_1_Template_app_hotel_list_isLoadingChange_44_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r46); const ctx_r55 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r55.isLoadingChange($event); })("isHotelListFetchingChange", function HotelSearchComponent_div_1_Template_app_hotel_list_isHotelListFetchingChange_44_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r46); const ctx_r56 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r56.isHotelListFetchingChange($event); });
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
@@ -6143,6 +6205,12 @@ function HotelSearchComponent_div_1_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("searchFormGroup", ctx_r1.hotelSearchFormGroup)("click", ctx_r1.click)("isSubmitted", ctx_r1.isSubmitted)("isSearchPage", ctx_r1.isSearchPage)("name", ctx_r1.rangeNames);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx_r1.click.rooms);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !ctx_r1.click.rooms);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx_r1.isSubmitted && ctx_r1.hotelSearchFormGroup.get("rooms").hasError("required"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](7);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx_r1.click.count);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !ctx_r1.click.count);
@@ -6210,7 +6278,8 @@ class HotelSearchComponent extends _hotel__WEBPACK_IMPORTED_MODULE_9__["Hotel"] 
             start: true,
             end: true,
             count: true,
-            trip: true
+            trip: true,
+            rooms: true,
         };
         this.isLoading = false;
         this.isHotelsLoading = false;
@@ -6333,6 +6402,7 @@ class HotelSearchComponent extends _hotel__WEBPACK_IMPORTED_MODULE_9__["Hotel"] 
             // console.log("mat-option clicks");
             // has to uncomment after travel popup
             this.countChange(null);
+            this.roomsChange(null);
             //this.tripChange(null);
         }
         else if (event.target.className.indexOf("cdk-overlay-backdrop") != -1) {
@@ -6341,6 +6411,7 @@ class HotelSearchComponent extends _hotel__WEBPACK_IMPORTED_MODULE_9__["Hotel"] 
             this.endDateChange(null, null);
             // has to uncomment after travel popup
             this.countChange(null);
+            this.roomsChange(null);
             //this.tripChange(null);
         }
         else if (event.target.id == "place"
@@ -6383,6 +6454,7 @@ class HotelSearchComponent extends _hotel__WEBPACK_IMPORTED_MODULE_9__["Hotel"] 
         this.endDateChange(null, null);
         this.placeChange(null);
         this.countChange(null);
+        this.roomsChange(null);
         //this.tripChange(null);
     }
     clickChange(objType) {
@@ -6394,16 +6466,22 @@ class HotelSearchComponent extends _hotel__WEBPACK_IMPORTED_MODULE_9__["Hotel"] 
             this.openEnd();
         }
         else if (objType == 'count') {
-            // has to uncomment after travel popup
             this.openTravellers();
-        } //else if(objType == 'trip') {
-        //   this.openTrip();
-        // }
+        }
+        else if (objType == 'rooms') {
+            this.openTravellersRooms();
+        }
     }
     openTravellers() {
         let self = this;
         setTimeout(() => {
             self.travellersSelect.open();
+        }, 50);
+    }
+    openTravellersRooms() {
+        let self = this;
+        setTimeout(() => {
+            self.travellersSelectRooms.open();
         }, 50);
     }
     // openTrip(){
@@ -6449,14 +6527,14 @@ class HotelSearchComponent extends _hotel__WEBPACK_IMPORTED_MODULE_9__["Hotel"] 
         }
     }
     countChange($event) {
-        // has to uncomment after travel popup
         if (!this.hotelSearchFormGroup.get('count').hasError('required')) {
             this.click.count = true;
         }
-        /*let json = this.hotelSearchFormGroup.value;
-        json.count = json.adults + json.childrens + json.rooms;
-        this.hotelSearchFormGroup.patchValue(json);
-        this.click.count = true;*/
+    }
+    roomsChange($event) {
+        if (!this.hotelSearchFormGroup.get('rooms').hasError('required')) {
+            this.click.rooms = true;
+        }
     }
     searchAirportSearchService(hotelCode) {
         const code = hotelCode.data != null ? hotelCode.data : hotelCode;
@@ -6635,24 +6713,26 @@ HotelSearchComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdef
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵviewQuery"](_c0, true);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵviewQuery"](_c1, true);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵviewQuery"](_c2, true);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵviewQuery"](_c3, true, _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"]);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵviewQuery"](_c3, true);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵviewQuery"](_c4, true, _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"]);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵviewQuery"](_c5, true, _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"]);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵviewQuery"](_c6, true);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵviewQuery"](_c6, true, _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"]);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵviewQuery"](_c7, true);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵviewQuery"](_c8, true);
     } if (rf & 2) {
         var _t;
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵloadQuery"]()) && (ctx.picker1 = _t.first);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵloadQuery"]()) && (ctx.picker2 = _t.first);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵloadQuery"]()) && (ctx.travellersSelect = _t.first);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵloadQuery"]()) && (ctx.travellersSelectRooms = _t.first);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵloadQuery"]()) && (ctx.hotelPlaceDiv = _t.first);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵloadQuery"]()) && (ctx.countPopupDiv = _t.first);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵloadQuery"]()) && (ctx.travellersDiv = _t.first);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵloadQuery"]()) && (ctx.hotelListComponentRef = _t.first);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵloadQuery"]()) && (ctx.placeInput = _t);
-    } }, features: [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵInheritDefinitionFeature"]], decls: 2, vars: 2, consts: [["class", "spinnerBg", 4, "ngIf"], ["class", "d-flex flex-column-fluid", 4, "ngIf"], [1, "spinnerBg"], [1, "spinner", 3, "diameter"], [1, "d-flex", "flex-column-fluid"], [1, "container"], [1, "row"], [1, "col-12"], [1, "brdSmallBlock", "bg-white", "gutter-b"], [1, "brdSmallBlock_inner"], ["id", "hotelDiv", 1, "searchCity", 2, "width", "45%", 3, "click"], ["hotelPlaceDiv", ""], [1, "searchContent"], [1, "search_lbl", "text-dark-50", "pb-2"], ["id", "place", "type", "text", "class", "search_inputField h4 text-truncate from", "readonly", "", 3, "title", "value", "click", 4, "ngIf"], ["class", "lessMtlr", 4, "ngIf"], [4, "ngIf"], [1, "searchDate", 2, "width", "24%", 3, "searchFormGroup", "click", "isSubmitted", "isSearchPage", "name", "searchFormGroupChange", "clickChange", "isSubmittedChange", "isSearchPageChange", "nameChange"], ["datePickerMultiple", ""], [1, "searchDate", 2, "width", "20%"], [1, "searchContent", 3, "click"], ["travellersDiv", ""], [1, "fas", "fa-angle-down", "text-primary"], ["id", "count", "class", "search_inputField h4 count", 4, "ngIf"], [1, "bg-primary", "rounded-top-right", "rounded-bottom-right", 2, "width", "11%"], ["type", "button", 1, "btn", "btn-text-white", "btn-hover-text-white", "h3", "border-0", "font-weight-bold", "pt-6", "pl-6", "pb-5", 3, "disabled", "click"], [1, "far", "fa-arrow-alt-circle-right", "text-white"], ["class", "row", 4, "ngIf"], ["class", "fixed-btm", 4, "ngIf"], ["class", "alert alert-custom alert-outline-info fade show text-center mt-20 mb-5 border-0", "role", "alert", 4, "ngIf"], [3, "hidden"], [3, "isLoading", "isHotelListFetching", "search", "isLoadingChange", "isHotelListFetchingChange"], ["id", "place", "type", "text", "readonly", "", 1, "search_inputField", "h4", "text-truncate", "from", 3, "title", "value", "click"], [1, "lessMtlr"], ["appearance", "outline", 1, "w-100"], ["type", "text", "matInput", "", 3, "formControl", "value", "errorStateMatcher", "onSelect"], ["id", "count", 1, "search_inputField", "h4", "count"], [1, "display6", "text-dark-65", "pl-1", "count"], [3, "formControl", "selectionChange"], ["travellersSelect", ""], [3, "value", 4, "ngFor", "ngForOf"], [3, "value"], [1, "card", "card-custom", "card-transparent", "card-shadowless"], [1, "card-header", "flex-wrap", "pl-0"], [1, "card-title"], ["type", "text", "placeholder", "Enter Hotel Name", 1, "form-control", "min-w-500px", 3, "input"], [1, "card-toolbar"], [1, "card-body", "p-0"], ["id", "kt_datatable", 1, "table", "table-checkable", "font-size-lg", "bg-white"], ["aria-label", "Record ID", 1, "dt-left", "sorting_disabled", 2, "width", "30px"], [1, "checkbox", "checkbox-single"], ["type", "checkbox", 1, "group-checkable", 3, "ngModel", "ngModelChange", "change"], [4, "ngFor", "ngForOf"], [1, "dt-left", "dtr-control"], ["type", "checkbox", 1, "checkable", 3, "ngModel", "ngModelChange", "change"], [1, "fixed-btm"], [1, "btn", "btn-primary", "btn-lg", "font-weight-bolder", "mb-2", 3, "click"], ["role", "alert", 1, "alert", "alert-custom", "alert-outline-info", "fade", "show", "text-center", "mt-20", "mb-5", "border-0"], [1, "alert-text", "h2"], [1, "fas", "fa-bed", "icon-2x", "text-info", "pr-2"]], template: function HotelSearchComponent_Template(rf, ctx) { if (rf & 1) {
+    } }, features: [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵInheritDefinitionFeature"]], decls: 2, vars: 2, consts: [["class", "spinnerBg", 4, "ngIf"], ["class", "d-flex flex-column-fluid", 4, "ngIf"], [1, "spinnerBg"], [1, "spinner", 3, "diameter"], [1, "d-flex", "flex-column-fluid"], [1, "container"], [1, "row"], [1, "col-12"], [1, "brdSmallBlock", "bg-white", "gutter-b"], [1, "brdSmallBlock_inner"], ["id", "hotelDiv", 1, "searchCity", 2, "width", "30%", 3, "click"], ["hotelPlaceDiv", ""], [1, "searchContent"], [1, "search_lbl", "text-dark-50", "pb-2"], ["id", "place", "type", "text", "class", "search_inputField h4 text-truncate from", "readonly", "", 3, "title", "value", "click", 4, "ngIf"], ["class", "lessMtlr", 4, "ngIf"], [4, "ngIf"], [1, "searchDate", 2, "width", "24%", 3, "searchFormGroup", "click", "isSubmitted", "isSearchPage", "name", "searchFormGroupChange", "clickChange", "isSubmittedChange", "isSearchPageChange", "nameChange"], ["datePickerMultiple", ""], [1, "searchDate", 2, "width", "18%"], [1, "searchContent", 3, "click"], ["travellersDiv", ""], [1, "fas", "fa-angle-down", "text-primary"], ["id", "count", "class", "search_inputField h4 count", 4, "ngIf"], [1, "bg-primary", "rounded-top-right", "rounded-bottom-right", 2, "width", "11%"], ["type", "button", 1, "btn", "btn-text-white", "btn-hover-text-white", "h3", "border-0", "font-weight-bold", "pt-6", "pl-6", "pb-5", 3, "disabled", "click"], [1, "far", "fa-arrow-alt-circle-right", "text-white"], ["class", "row", 4, "ngIf"], ["class", "fixed-btm", 4, "ngIf"], ["class", "alert alert-custom alert-outline-info fade show text-center mt-20 mb-5 border-0", "role", "alert", 4, "ngIf"], [3, "hidden"], [3, "isLoading", "isHotelListFetching", "search", "isLoadingChange", "isHotelListFetchingChange"], ["id", "place", "type", "text", "readonly", "", 1, "search_inputField", "h4", "text-truncate", "from", 3, "title", "value", "click"], [1, "lessMtlr"], ["appearance", "outline", 1, "w-100"], ["type", "text", "matInput", "", 3, "formControl", "value", "errorStateMatcher", "onSelect"], ["id", "count", 1, "search_inputField", "h4", "count"], [1, "display6", "text-dark-65", "pl-1", "count"], [3, "formControl", "selectionChange"], ["travellersSelectRooms", ""], [3, "value", 4, "ngFor", "ngForOf"], [3, "value"], ["travellersSelect", ""], [1, "card", "card-custom", "card-transparent", "card-shadowless"], [1, "card-header", "flex-wrap", "pl-0"], [1, "card-title"], ["type", "text", "placeholder", "Enter Hotel Name", 1, "form-control", "min-w-500px", 3, "input"], [1, "card-toolbar"], [1, "card-body", "p-0"], ["id", "kt_datatable", 1, "table", "table-checkable", "font-size-lg", "bg-white"], ["aria-label", "Record ID", 1, "dt-left", "sorting_disabled", 2, "width", "30px"], [1, "checkbox", "checkbox-single"], ["type", "checkbox", 1, "group-checkable", 3, "ngModel", "ngModelChange", "change"], [4, "ngFor", "ngForOf"], [1, "dt-left", "dtr-control"], ["type", "checkbox", 1, "checkable", 3, "ngModel", "ngModelChange", "change"], [1, "fixed-btm"], [1, "btn", "btn-primary", "btn-lg", "font-weight-bolder", "mb-2", 3, "click"], ["role", "alert", 1, "alert", "alert-custom", "alert-outline-info", "fade", "show", "text-center", "mt-20", "mb-5", "border-0"], [1, "alert-text", "h2"], [1, "fas", "fa-bed", "icon-2x", "text-info", "pr-2"]], template: function HotelSearchComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](0, HotelSearchComponent_div_0_Template, 2, 1, "div", 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](1, HotelSearchComponent_div_1_Template, 36, 21, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](1, HotelSearchComponent_div_1_Template, 45, 24, "div", 1);
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.isLoading);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
@@ -6677,6 +6757,9 @@ Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
         }], travellersSelect: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"],
             args: ['travellersSelect']
+        }], travellersSelectRooms: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"],
+            args: ['travellersSelectRooms']
         }], hotelPlaceDiv: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"],
             args: ['hotelPlaceDiv', { read: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"], static: false }]
@@ -7133,10 +7216,11 @@ __webpack_require__.r(__webpack_exports__);
 const _c0 = ["picker1"];
 const _c1 = ["picker2"];
 const _c2 = ["travellersSelect"];
-const _c3 = ["hotelPlaceDiv"];
-const _c4 = ["countPopupDiv"];
-const _c5 = ["travellersDiv"];
-const _c6 = ["placeInput"];
+const _c3 = ["travellersSelectRooms"];
+const _c4 = ["hotelPlaceDiv"];
+const _c5 = ["countPopupDiv"];
+const _c6 = ["travellersDiv"];
+const _c7 = ["placeInput"];
 function HotelDashboardComponent_div_0_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "mat-spinner", 3);
@@ -7146,9 +7230,9 @@ function HotelDashboardComponent_div_0_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("diameter", 30);
 } }
 function HotelDashboardComponent_div_1_input_20_Template(rf, ctx) { if (rf & 1) {
-    const _r14 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 35);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HotelDashboardComponent_div_1_input_20_Template_input_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r14); const ctx_r13 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r13.clickChange("place"); });
+    const _r18 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HotelDashboardComponent_div_1_input_20_Template_input_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r18); const ctx_r17 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r17.clickChange("place"); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
@@ -7156,11 +7240,11 @@ function HotelDashboardComponent_div_1_input_20_Template(rf, ctx) { if (rf & 1) 
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("title", ctx_r4.hotelSearchFormGroup.value.place);
 } }
 function HotelDashboardComponent_div_1_div_21_Template(rf, ctx) { if (rf & 1) {
-    const _r16 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 36);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "mat-form-field", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "input", 38);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("onSelect", function HotelDashboardComponent_div_1_div_21_Template_input_onSelect_2_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r16); const ctx_r15 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r15.setAddress($event); });
+    const _r20 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 38);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "mat-form-field", 39);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "input", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("onSelect", function HotelDashboardComponent_div_1_div_21_Template_input_onSelect_2_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r20); const ctx_r19 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r19.setAddress($event); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -7183,58 +7267,96 @@ function HotelDashboardComponent_div_1_mat_error_23_Template(rf, ctx) { if (rf &
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Please Select From");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
-function HotelDashboardComponent_div_1_div_32_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 39);
+function HotelDashboardComponent_div_1_div_33_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 41);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 42);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Room");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "span", 40);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "Guests");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const ctx_r10 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx_r10.hotelSearchFormGroup.value.rooms, "");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx_r10.hotelSearchFormGroup.value.count, "");
 } }
-function HotelDashboardComponent_div_1_div_33_mat_option_4_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "mat-option", 44);
+function HotelDashboardComponent_div_1_div_34_mat_option_4_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "mat-option", 46);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const number_r19 = ctx.$implicit;
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", number_r19);
+    const number_r23 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", number_r23);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", number_r19, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", number_r23, " ");
 } }
-function HotelDashboardComponent_div_1_div_33_Template(rf, ctx) { if (rf & 1) {
-    const _r21 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 36);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "mat-form-field", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "mat-select", 41, 42);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("selectionChange", function HotelDashboardComponent_div_1_div_33_Template_mat_select_selectionChange_2_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r21); const ctx_r20 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r20.countChange($event.value); });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, HotelDashboardComponent_div_1_div_33_mat_option_4_Template, 2, 2, "mat-option", 43);
+function HotelDashboardComponent_div_1_div_34_Template(rf, ctx) { if (rf & 1) {
+    const _r25 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 38);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "mat-form-field", 39);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "mat-select", 43, 44);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("selectionChange", function HotelDashboardComponent_div_1_div_34_Template_mat_select_selectionChange_2_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r25); const ctx_r24 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r24.roomsChange($event.value); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, HotelDashboardComponent_div_1_div_34_mat_option_4_Template, 2, 2, "mat-option", 45);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const ctx_r11 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formControl", ctx_r11.hotelSearchFormGroup.get("count"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formControl", ctx_r11.hotelSearchFormGroup.get("rooms"));
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r11.numbers);
 } }
-function HotelDashboardComponent_div_1_mat_error_34_Template(rf, ctx) { if (rf & 1) {
+function HotelDashboardComponent_div_1_mat_error_35_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "mat-error");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Please choose a number");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+function HotelDashboardComponent_div_1_div_43_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 47);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 42);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Guests");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r14 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx_r14.hotelSearchFormGroup.value.count, "");
+} }
+function HotelDashboardComponent_div_1_div_44_mat_option_4_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "mat-option", 46);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const number_r28 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", number_r28);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", number_r28, " ");
+} }
+function HotelDashboardComponent_div_1_div_44_Template(rf, ctx) { if (rf & 1) {
+    const _r30 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 38);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "mat-form-field", 39);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "mat-select", 43, 48);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("selectionChange", function HotelDashboardComponent_div_1_div_44_Template_mat_select_selectionChange_2_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r30); const ctx_r29 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r29.countChange($event.value); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, HotelDashboardComponent_div_1_div_44_mat_option_4_Template, 2, 2, "mat-option", 45);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r15 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formControl", ctx_r15.hotelSearchFormGroup.get("count"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r15.numbers);
+} }
+function HotelDashboardComponent_div_1_mat_error_45_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "mat-error");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Please choose a number");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function HotelDashboardComponent_div_1_Template(rf, ctx) { if (rf & 1) {
-    const _r23 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    const _r32 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 4);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 5);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 6);
@@ -7253,7 +7375,7 @@ function HotelDashboardComponent_div_1_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "div", 16);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "div", 17);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "div", 18, 19);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HotelDashboardComponent_div_1_Template_div_click_15_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r23); const ctx_r22 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r22.clickChange("place"); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HotelDashboardComponent_div_1_Template_div_click_15_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r32); const ctx_r31 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r31.clickChange("place"); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "div", 20);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "span", 21);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](19, "Destination/Airport/Landmark/Hotel");
@@ -7265,32 +7387,48 @@ function HotelDashboardComponent_div_1_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "datepicker-range", 25, 26);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("searchFormGroupChange", function HotelDashboardComponent_div_1_Template_datepicker_range_searchFormGroupChange_24_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r23); const ctx_r24 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r24.hotelSearchFormGroup = $event; })("clickChange", function HotelDashboardComponent_div_1_Template_datepicker_range_clickChange_24_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r23); const ctx_r25 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r25.click = $event; })("isSubmittedChange", function HotelDashboardComponent_div_1_Template_datepicker_range_isSubmittedChange_24_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r23); const ctx_r26 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r26.isSubmitted = $event; })("isSearchPageChange", function HotelDashboardComponent_div_1_Template_datepicker_range_isSearchPageChange_24_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r23); const ctx_r27 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r27.isSearchPage = $event; })("nameChange", function HotelDashboardComponent_div_1_Template_datepicker_range_nameChange_24_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r23); const ctx_r28 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r28.rangeNames = $event; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("searchFormGroupChange", function HotelDashboardComponent_div_1_Template_datepicker_range_searchFormGroupChange_24_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r32); const ctx_r33 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r33.hotelSearchFormGroup = $event; })("clickChange", function HotelDashboardComponent_div_1_Template_datepicker_range_clickChange_24_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r32); const ctx_r34 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r34.click = $event; })("isSubmittedChange", function HotelDashboardComponent_div_1_Template_datepicker_range_isSubmittedChange_24_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r32); const ctx_r35 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r35.isSubmitted = $event; })("isSearchPageChange", function HotelDashboardComponent_div_1_Template_datepicker_range_isSearchPageChange_24_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r32); const ctx_r36 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r36.isSearchPage = $event; })("nameChange", function HotelDashboardComponent_div_1_Template_datepicker_range_nameChange_24_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r32); const ctx_r37 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r37.rangeNames = $event; });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "div");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "div", 27, 28);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HotelDashboardComponent_div_1_Template_div_click_27_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r23); const ctx_r29 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r29.clickChange("count"); });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "span", 21);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](30, "Rooms & Guests ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](31, "i", 29);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "div", 27, 19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "div", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "div", 28);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HotelDashboardComponent_div_1_Template_div_click_29_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r32); const ctx_r38 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r38.clickChange("rooms"); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "span", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](31, "Rooms");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](32, "i", 29);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](32, HotelDashboardComponent_div_1_div_32_Template, 7, 2, "div", 30);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](33, HotelDashboardComponent_div_1_div_33_Template, 5, 2, "div", 23);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](34, HotelDashboardComponent_div_1_mat_error_34_Template, 2, 0, "mat-error", 24);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](33, HotelDashboardComponent_div_1_div_33_Template, 4, 1, "div", 30);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](34, HotelDashboardComponent_div_1_div_34_Template, 5, 2, "div", 23);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](35, HotelDashboardComponent_div_1_mat_error_35_Template, 2, 0, "mat-error", 24);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](35, "div", 31);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](36, "button", 32);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HotelDashboardComponent_div_1_Template_button_click_36_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r23); const ctx_r30 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r30.search(); });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](37, " Search ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](38, "i", 33);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](36, "div", 31, 19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](38, "div", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](39, "div", 28);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HotelDashboardComponent_div_1_Template_div_click_39_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r32); const ctx_r39 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r39.clickChange("count"); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](40, "span", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](41, "Guests ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](42, "i", 29);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](43, HotelDashboardComponent_div_1_div_43_Template, 4, 1, "div", 32);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](44, HotelDashboardComponent_div_1_div_44_Template, 5, 2, "div", 23);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](45, HotelDashboardComponent_div_1_mat_error_45_Template, 2, 0, "mat-error", 24);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](39, "div", 34);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](40, "Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](46, "div", 33);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](47, "button", 34);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HotelDashboardComponent_div_1_Template_button_click_47_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r32); const ctx_r40 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r40.search(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](48, " Search ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](49, "i", 35);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](50, "div", 36);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](51, "Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -7311,6 +7449,12 @@ function HotelDashboardComponent_div_1_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r1.isSubmitted && ctx_r1.hotelSearchFormGroup.hasError("fromSelected"));
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("searchFormGroup", ctx_r1.hotelSearchFormGroup)("click", ctx_r1.click)("isSubmitted", ctx_r1.isSubmitted)("isSearchPage", ctx_r1.isSearchPage)("name", ctx_r1.rangeNames);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](9);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r1.click.rooms);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx_r1.click.rooms);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r1.isSubmitted && ctx_r1.hotelSearchFormGroup.get("rooms").hasError("required"));
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](8);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r1.click.count);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
@@ -7351,7 +7495,8 @@ class HotelDashboardComponent extends _hotel__WEBPACK_IMPORTED_MODULE_5__["Hotel
             place: true,
             start: true,
             end: true,
-            count: true
+            count: true,
+            rooms: true,
         };
         this.isLoading = false;
         this.isSubmitted = false;
@@ -7420,6 +7565,7 @@ class HotelDashboardComponent extends _hotel__WEBPACK_IMPORTED_MODULE_5__["Hotel
             // console.log("mat-option clicks");
             // has to uncomment after travel popup 
             this.countChange(null);
+            this.roomsChange(null);
         }
         else if (event.target.className.indexOf("cdk-overlay-backdrop") != -1) {
             // console.log("overlay clicks");
@@ -7427,6 +7573,7 @@ class HotelDashboardComponent extends _hotel__WEBPACK_IMPORTED_MODULE_5__["Hotel
             this.endDateChange(null, null);
             // has to uncomment after travel popup
             this.countChange(null);
+            this.roomsChange(null);
         }
         else if (event.target.id == "place"
             || event.target.id == "hotelDiv"
@@ -7468,6 +7615,7 @@ class HotelDashboardComponent extends _hotel__WEBPACK_IMPORTED_MODULE_5__["Hotel
         this.endDateChange(null, null);
         this.placeChange(null);
         this.countChange(null);
+        this.roomsChange(null);
     }
     clickChange(objType) {
         this.click[objType] = false;
@@ -7481,11 +7629,21 @@ class HotelDashboardComponent extends _hotel__WEBPACK_IMPORTED_MODULE_5__["Hotel
             // has to uncomment after travel popup  
             this.openTravellers();
         }
+        else if (objType == 'rooms') {
+            // has to uncomment after travel popup  
+            this.openTravellersRooms();
+        }
     }
     openTravellers() {
         let self = this;
         setTimeout(() => {
             self.travellersSelect.open();
+        }, 50);
+    }
+    openTravellersRooms() {
+        let self = this;
+        setTimeout(() => {
+            self.travellersSelectRooms.open();
         }, 50);
     }
     openStart() {
@@ -7522,14 +7680,14 @@ class HotelDashboardComponent extends _hotel__WEBPACK_IMPORTED_MODULE_5__["Hotel
         }
     }
     countChange($event) {
-        // has to uncomment after travel popup
         if (!this.hotelSearchFormGroup.get('count').hasError('required')) {
             this.click.count = true;
         }
-        /*let json = this.hotelSearchFormGroup.value;
-        json.count = json.adults + json.childrens + json.rooms;
-        this.hotelSearchFormGroup.patchValue(json);
-        this.click.count = true;*/
+    }
+    roomsChange($event) {
+        if (!this.hotelSearchFormGroup.get('rooms').hasError('required')) {
+            this.click.rooms = true;
+        }
     }
     searchHotelCity(cityString) {
         const code = cityString.data != null ? cityString.data : cityString;
@@ -7597,22 +7755,24 @@ HotelDashboardComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵ
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](_c0, true);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](_c1, true);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](_c2, true);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](_c3, true, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](_c3, true);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](_c4, true, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](_c5, true, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](_c6, true);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](_c6, true, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](_c7, true);
     } if (rf & 2) {
         var _t;
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.picker1 = _t.first);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.picker2 = _t.first);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.travellersSelect = _t.first);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.travellersSelectRooms = _t.first);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.hotelPlaceDiv = _t.first);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.countPopupDiv = _t.first);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.travellersDiv = _t.first);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.placeInput = _t);
-    } }, features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]], decls: 2, vars: 2, consts: [["class", "spinnerBg", 4, "ngIf"], ["class", "d-flex flex-column-fluid", 4, "ngIf"], [1, "spinnerBg"], [1, "spinner", 3, "diameter"], [1, "d-flex", "flex-column-fluid"], [1, "container"], [1, "row"], [1, "col-12"], [1, "card", "card-custom", "gutter-b", "card-stretch", "rounded-xl"], [1, "card-header", "border-0"], [1, "card-toolbar"], [1, "text-muted", "mb-0"], [1, "card-body", "pt-0", "pl-6", "pr-6"], ["searchForm", ""], [1, "tab-content"], ["id", "lr_tab_pane_1", "role", "tabpanel", 1, "tab-pane", "fade", "active", "show"], [1, "brdBigBlock"], [1, "brdBigBlock_inner"], ["id", "hotelDiv", 1, "searchCity", 2, "width", "48%", 3, "click"], ["hotelPlaceDiv", ""], [1, "searchContent"], [1, "search_lbl", "text-dark-50", "pb-2"], ["id", "place", "type", "text", "class", "search_inputField h1 text-truncate from", "readonly", "", 3, "value", "title", "click", 4, "ngIf"], ["class", "lessMlr-1", 4, "ngIf"], [4, "ngIf"], [1, "searchDate", 2, "width", "32%", 3, "searchFormGroup", "click", "isSubmitted", "isSearchPage", "name", "searchFormGroupChange", "clickChange", "isSubmittedChange", "isSearchPageChange", "nameChange"], ["datePickerMultiple", ""], [1, "searchContent", 3, "click"], ["travellersDiv", ""], [1, "fas", "fa-angle-down", "text-primary"], ["id", "count", "class", "search_inputField h2 count", 4, "ngIf"], [1, "d-flex", "justify-content-center", "pt-5"], ["type", "button", 1, "btn", "btn-primary", "btn-pill", "btn-lg", "colorBg", "font-size-h3", "w-200px", "btn-shadow", 3, "click"], [1, "far", "fa-arrow-alt-circle-right"], ["id", "lr_tab_pane_2", "role", "tabpanel", 1, "tab-pane", "fade"], ["id", "place", "type", "text", "readonly", "", 1, "search_inputField", "h1", "text-truncate", "from", 3, "value", "title", "click"], [1, "lessMlr-1"], ["appearance", "outline", 1, "w-100"], ["type", "text", "matInput", "", 3, "value", "formControl", "errorStateMatcher", "onSelect"], ["id", "count", 1, "search_inputField", "h2", "count"], [1, "display6", "text-dark-65", "pl-1", "count"], [3, "formControl", "selectionChange"], ["travellersSelect", ""], [3, "value", 4, "ngFor", "ngForOf"], [3, "value"]], template: function HotelDashboardComponent_Template(rf, ctx) { if (rf & 1) {
+    } }, features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]], decls: 2, vars: 2, consts: [["class", "spinnerBg", 4, "ngIf"], ["class", "d-flex flex-column-fluid", 4, "ngIf"], [1, "spinnerBg"], [1, "spinner", 3, "diameter"], [1, "d-flex", "flex-column-fluid"], [1, "container"], [1, "row"], [1, "col-12"], [1, "card", "card-custom", "gutter-b", "card-stretch", "rounded-xl"], [1, "card-header", "border-0"], [1, "card-toolbar"], [1, "text-muted", "mb-0"], [1, "card-body", "pt-0", "pl-6", "pr-6"], ["searchForm", ""], [1, "tab-content"], ["id", "lr_tab_pane_1", "role", "tabpanel", 1, "tab-pane", "fade", "active", "show"], [1, "brdBigBlock"], [1, "brdBigBlock_inner"], ["id", "hotelDiv", 1, "searchCity", 2, "width", "30%", 3, "click"], ["hotelPlaceDiv", ""], [1, "searchContent"], [1, "search_lbl", "text-dark-50", "pb-2"], ["id", "place", "type", "text", "class", "search_inputField h1 text-truncate from", "readonly", "", 3, "value", "title", "click", 4, "ngIf"], ["class", "lessMlr-1", 4, "ngIf"], [4, "ngIf"], [1, "searchDate", 2, "width", "32%", 3, "searchFormGroup", "click", "isSubmitted", "isSearchPage", "name", "searchFormGroupChange", "clickChange", "isSubmittedChange", "isSearchPageChange", "nameChange"], ["datePickerMultiple", ""], ["id", "hotelDiv", 1, "searchCity", 2, "width", "19%"], [3, "click"], [1, "fas", "fa-angle-down", "text-primary"], ["id", "rooms", "class", "search_inputField h2 count", 4, "ngIf"], ["id", "hotelDiv", 1, "searchCity", 2, "width", "19%", "border-right", "solid 0px #dbede3"], ["id", "count", "class", "search_inputField h2 count", 4, "ngIf"], [1, "d-flex", "justify-content-center", "pt-5"], ["type", "button", 1, "btn", "btn-primary", "btn-pill", "btn-lg", "colorBg", "font-size-h3", "w-200px", "btn-shadow", 3, "click"], [1, "far", "fa-arrow-alt-circle-right"], ["id", "lr_tab_pane_2", "role", "tabpanel", 1, "tab-pane", "fade"], ["id", "place", "type", "text", "readonly", "", 1, "search_inputField", "h1", "text-truncate", "from", 3, "value", "title", "click"], [1, "lessMlr-1"], ["appearance", "outline", 1, "w-100"], ["type", "text", "matInput", "", 3, "value", "formControl", "errorStateMatcher", "onSelect"], ["id", "rooms", 1, "search_inputField", "h2", "count"], [1, "display6", "text-dark-65", "pl-1", "count"], [3, "formControl", "selectionChange"], ["travellersSelectRooms", ""], [3, "value", 4, "ngFor", "ngForOf"], [3, "value"], ["id", "count", 1, "search_inputField", "h2", "count"], ["travellersSelect", ""]], template: function HotelDashboardComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](0, HotelDashboardComponent_div_0_Template, 2, 1, "div", 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, HotelDashboardComponent_div_1_Template, 41, 12, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, HotelDashboardComponent_div_1_Template, 52, 15, "div", 1);
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isLoading);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
@@ -7634,6 +7794,9 @@ HotelDashboardComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵ
         }], travellersSelect: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
             args: ['travellersSelect']
+        }], travellersSelectRooms: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+            args: ['travellersSelectRooms']
         }], hotelPlaceDiv: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
             args: ['hotelPlaceDiv', { read: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"], static: false }]

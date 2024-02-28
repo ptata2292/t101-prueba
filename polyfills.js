@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\pedro\OneDrive\Escritorio\trabajo-striano\air-poc-ui-develop\src\polyfills.ts */"hN/g");
+module.exports = __webpack_require__(/*! C:\Users\pedro\OneDrive\Escritorio\react\hotel\LR%20GUI\src\polyfills.ts */"hN/g");
 
 
 /***/ }),
